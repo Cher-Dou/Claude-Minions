@@ -1,0 +1,15 @@
+{
+  "label": "Octocrylene",
+  "ec50_input": "62.60455490807807 uM",
+  "exposure_input": "8.0 nM",
+  "ec50_nM": 62604.55490807807,
+  "exposure_nM": 8.0,
+  "margin_of_exposure": 7825.569363509759,
+  "band": "LOWER PRIORITY",
+  "interpretation": "Effect concentration is far above realistic exposure (on this endpoint alone).",
+  "caveats": [
+    "Screening-level comparison, not a formal risk assessment.",
+    "Nominal in vitro concentration may differ from free/bioavailable concentration.",
+    "In vitro medium vs plasma concentrations are only approximately comparable; consider formal IVIVE (e.g. httk) for a rigorous estimate."
+  ]
+}

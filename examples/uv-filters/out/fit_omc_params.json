@@ -1,0 +1,19 @@
+{
+  "model": "4-parameter logistic (Hill)",
+  "direction": "up (EC50)",
+  "ec50_ic50": 15.092343654113877,
+  "ec50_ic50_95ci": [
+    11.337020280136436,
+    18.84766702809132
+  ],
+  "ec50_ic50_se": 1.9159813132537966,
+  "hill_slope": 1.0094979825113586,
+  "top": 100.00000000099999,
+  "bottom": -9.999969145761598e-10,
+  "r_squared": 0.9931848460366738,
+  "rmse": 2.6259726456148407,
+  "n_points": 24,
+  "warnings": [
+    "Response plateau not reached; EC50/IC50 is an extrapolation."
+  ]
+}

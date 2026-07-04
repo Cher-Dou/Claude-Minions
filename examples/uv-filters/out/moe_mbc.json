@@ -1,0 +1,15 @@
+{
+  "label": "4-MBC",
+  "ec50_input": "2.037062066697987 uM",
+  "exposure_input": "5.0 nM",
+  "ec50_nM": 2037.062066697987,
+  "exposure_nM": 5.0,
+  "margin_of_exposure": 407.4124133395974,
+  "band": "LOWER PRIORITY",
+  "interpretation": "Effect concentration is far above realistic exposure (on this endpoint alone).",
+  "caveats": [
+    "Screening-level comparison, not a formal risk assessment.",
+    "Nominal in vitro concentration may differ from free/bioavailable concentration.",
+    "In vitro medium vs plasma concentrations are only approximately comparable; consider formal IVIVE (e.g. httk) for a rigorous estimate."
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "title": "Estrogen receptor agonism leading to impaired female reproduction",
+  "mie": {"id": "MIE", "label": "Estrogen receptor (ERa) agonism"},
+  "key_events": [
+    {"id": "KE1", "label": "Altered estrogen-responsive gene transcription", "level": "molecular"},
+    {"id": "KE2", "label": "Disrupted granulosa cell steroidogenesis", "level": "cellular"},
+    {"id": "KE3", "label": "Impaired folliculogenesis", "level": "tissue"},
+    {"id": "KE4", "label": "Reduced oocyte quality", "level": "organ"}
+  ],
+  "ao": {"id": "AO", "label": "Reduced female fecundity"},
+  "kers": [
+    {"from": "MIE", "to": "KE1", "confidence": "strong",   "evidence": "in vitro reporter"},
+    {"from": "KE1", "to": "KE2", "confidence": "moderate", "evidence": "in vitro"},
+    {"from": "KE2", "to": "KE3", "confidence": "moderate", "evidence": "animal"},
+    {"from": "KE3", "to": "KE4", "confidence": "moderate", "evidence": "animal"},
+    {"from": "KE4", "to": "AO",  "confidence": "weak",     "evidence": "human assoc."}
+  ]
+}

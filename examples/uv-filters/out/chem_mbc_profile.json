@@ -1,0 +1,40 @@
+{
+  "query": "CAS=36861-47-9",
+  "pubchem_cid": 37563,
+  "ambiguous_match": false,
+  "all_cids": [
+    37563
+  ],
+  "cas_rn": "36861-47-9",
+  "iupac_name": "1,7,7-trimethyl-3-[(4-methylphenyl)methylidene]bicyclo[2.2.1]heptan-2-one",
+  "molecular_formula": "C18H22O",
+  "molecular_weight": "254.4",
+  "smiles": "CC1=CC=C(C=C1)C=C2C3CCC(C2=O)(C3(C)C)C",
+  "connectivity_smiles": "CC1=CC=C(C=C1)C=C2C3CCC(C2=O)(C3(C)C)C",
+  "inchikey": "HEOCBCNFKCOKBX-UHFFFAOYSA-N",
+  "xlogp_predicted": 4.5,
+  "synonyms": [
+    "36861-47-9",
+    "3-(4'-Methylbenzylidene)camphor",
+    "RefChem:1066747",
+    "Bicyclo(2.2.1)heptan-2-one, 1,7,7-trimethyl-3-((4-methylphenyl)methylene)-",
+    "4-Methylbenzylidenecamphor",
+    "1,7,7-trimethyl-3-[(4-methylphenyl)methylidene]bicyclo[2.2.1]heptan-2-one",
+    "Methyl Benzylidene Camphor; 3-(4'-Methyl)benzylidene-bornan-2-one",
+    "3-(4'-methyl)benzylidene-bornan-2-one",
+    "38102-62-4",
+    "SCHEMBL83091",
+    "UYB80641",
+    "DA-30146"
+  ],
+  "sources": {
+    "identity_properties": "PubChem CID 37563 (https://pubchem.ncbi.nlm.nih.gov/compound/37563)"
+  },
+  "notes": [
+    "XLogP is a computed (predicted) value, not experimental."
+  ],
+  "comptox": {
+    "available": false,
+    "note": "No EPA CCTE API key provided (set --ccte-key or CCTE_API_KEY). Get a free key at https://api-ccte.epa.gov/docs/. Skipping bioactivity."
+  }
+}

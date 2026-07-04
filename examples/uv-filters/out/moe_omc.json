@@ -1,0 +1,15 @@
+{
+  "label": "Octinoxate (OMC)",
+  "ec50_input": "15.092343654113877 uM",
+  "exposure_input": "3.0 nM",
+  "ec50_nM": 15092.343654113878,
+  "exposure_nM": 3.0,
+  "margin_of_exposure": 5030.78121803796,
+  "band": "LOWER PRIORITY",
+  "interpretation": "Effect concentration is far above realistic exposure (on this endpoint alone).",
+  "caveats": [
+    "Screening-level comparison, not a formal risk assessment.",
+    "Nominal in vitro concentration may differ from free/bioavailable concentration.",
+    "In vitro medium vs plasma concentrations are only approximately comparable; consider formal IVIVE (e.g. httk) for a rigorous estimate."
+  ]
+}

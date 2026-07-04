@@ -52,11 +52,12 @@ def fetch_synonyms(cid, limit=12):
         syns = data.get("InformationList", {}).get("Information", [{}])[0].get("Synonym", [])
     except Exception:
         return [], None
-    # Heuristic CAS: pattern digits-digits-digit
+    # Heuristic CAS: 2-7 digits - exactly 2 digits - 1 check digit (excludes EC numbers)
     cas = None
     for s in syns:
         parts = s.split("-")
-        if len(parts) == 3 and all(p.isdigit() for p in parts) and len(parts[2]) == 1:
+        if (len(parts) == 3 and all(p.isdigit() for p in parts)
+                and 2 <= len(parts[0]) <= 7 and len(parts[1]) == 2 and len(parts[2]) == 1):
             cas = s
             break
     return syns[:limit], cas
@@ -139,7 +140,7 @@ def main():
         "pubchem_cid": cid,
         "ambiguous_match": ambiguous,
         "all_cids": cids[:10],
-        "cas_rn": cas or (args.cas if args.cas else None),
+        "cas_rn": (args.cas if args.cas else cas),
         "iupac_name": props.get("IUPACName"),
         "molecular_formula": props.get("MolecularFormula"),
         "molecular_weight": props.get("MolecularWeight"),

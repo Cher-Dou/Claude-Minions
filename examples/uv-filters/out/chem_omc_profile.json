@@ -1,0 +1,43 @@
+{
+  "query": "CAS=5466-77-3",
+  "pubchem_cid": 5355130,
+  "ambiguous_match": true,
+  "all_cids": [
+    5355130,
+    21630,
+    11044481
+  ],
+  "cas_rn": "5466-77-3",
+  "iupac_name": "2-ethylhexyl (E)-3-(4-methoxyphenyl)prop-2-enoate",
+  "molecular_formula": "C18H26O3",
+  "molecular_weight": "290.4",
+  "smiles": "CCCCC(CC)COC(=O)/C=C/C1=CC=C(C=C1)OC",
+  "connectivity_smiles": "CCCCC(CC)COC(=O)C=CC1=CC=C(C=C1)OC",
+  "inchikey": "YBGZDTIWKVFICR-JLHYYAGUSA-N",
+  "xlogp_predicted": 5.3,
+  "synonyms": [
+    "Octinoxate",
+    "Parsol MCX",
+    "Parsol MOX",
+    "Parsol",
+    "Octyl methoxycinnamate",
+    "2-Ethylhexyl-p-methoxycinnamate",
+    "Escalol 557",
+    "Sunscreen AV",
+    "Ethylhexyl methoxycinnamate",
+    "Uvinul MC80",
+    "2-Ethylhexyl p-methoxycinnamate",
+    "Ethylhexyl p-methoxycinnamate"
+  ],
+  "sources": {
+    "identity_properties": "PubChem CID 5355130 (https://pubchem.ncbi.nlm.nih.gov/compound/5355130)"
+  },
+  "notes": [
+    "Query matched 3 CIDs; using 5355130. Disambiguate before relying on this.",
+    "XLogP is a computed (predicted) value, not experimental."
+  ],
+  "comptox": {
+    "available": false,
+    "note": "No EPA CCTE API key provided (set --ccte-key or CCTE_API_KEY). Get a free key at https://api-ccte.epa.gov/docs/. Skipping bioactivity."
+  }
+}

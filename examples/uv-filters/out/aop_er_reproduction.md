@@ -1,0 +1,20 @@
+# Estrogen receptor agonism leading to impaired female reproduction
+
+```mermaid
+flowchart TD
+    MIE["MIE: Estrogen receptor (ERa) agonism"]
+    KE1["KE: Altered estrogen-responsive gene transcription (molecular)"]
+    KE2["KE: Disrupted granulosa cell steroidogenesis (cellular)"]
+    KE3["KE: Impaired folliculogenesis (tissue)"]
+    KE4["KE: Reduced oocyte quality (organ)"]
+    AO["AO: Reduced female fecundity"]
+
+    MIE -->|in vitro reporter| KE1
+    KE1 -.->|in vitro| KE2
+    KE2 -.->|animal| KE3
+    KE3 -.->|animal| KE4
+    KE4 -..->|human assoc.| AO
+
+    style MIE fill:#0072B2,color:#fff
+    style AO fill:#D55E00,color:#fff
+```

@@ -1,0 +1,15 @@
+{
+  "label": "Oxybenzone (BP-3)",
+  "ec50_input": "7.877911827923957 uM",
+  "exposure_input": "20.0 nM",
+  "ec50_nM": 7877.911827923957,
+  "exposure_nM": 20.0,
+  "margin_of_exposure": 393.89559139619786,
+  "band": "LOWER PRIORITY",
+  "interpretation": "Effect concentration is far above realistic exposure (on this endpoint alone).",
+  "caveats": [
+    "Screening-level comparison, not a formal risk assessment.",
+    "Nominal in vitro concentration may differ from free/bioavailable concentration.",
+    "In vitro medium vs plasma concentrations are only approximately comparable; consider formal IVIVE (e.g. httk) for a rigorous estimate."
+  ]
+}

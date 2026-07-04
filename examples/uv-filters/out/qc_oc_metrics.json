@@ -1,0 +1,23 @@
+{
+  "n_wells": 32,
+  "blank_mean": 0.0,
+  "n_neg": 4,
+  "n_pos": 4,
+  "neg_mean": 101.57499999999999,
+  "pos_mean": 1630.8000000000002,
+  "neg_cv_percent": 10.881927395816925,
+  "pos_cv_percent": 1.5073898767870852,
+  "z_prime": 0.9300904081552195,
+  "signal_window_fold": 16.055131676101407,
+  "verdict": "PASS",
+  "notes": [],
+  "outlier_wells": [
+    "C7",
+    "C8",
+    "D7",
+    "D8",
+    "E7",
+    "E8"
+  ],
+  "normalization": "% of positive-control window"
+}

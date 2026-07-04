@@ -1,0 +1,40 @@
+{
+  "query": "CAS=131-57-7",
+  "pubchem_cid": 4632,
+  "ambiguous_match": false,
+  "all_cids": [
+    4632
+  ],
+  "cas_rn": "131-57-7",
+  "iupac_name": "(2-hydroxy-4-methoxyphenyl)-phenylmethanone",
+  "molecular_formula": "C14H12O3",
+  "molecular_weight": "228.24",
+  "smiles": "COC1=CC(=C(C=C1)C(=O)C2=CC=CC=C2)O",
+  "connectivity_smiles": "COC1=CC(=C(C=C1)C(=O)C2=CC=CC=C2)O",
+  "inchikey": "DXGLGDHPHMLXJC-UHFFFAOYSA-N",
+  "xlogp_predicted": 3.6,
+  "synonyms": [
+    "oxybenzone",
+    "131-57-7",
+    "2-HYDROXY-4-METHOXYBENZOPHENONE",
+    "Benzophenone-3",
+    "2-Benzoyl-5-methoxyphenol",
+    "Advastab 45",
+    "Oxybenzon",
+    "Anuvex",
+    "4-Methoxy-2-hydroxybenzophenone",
+    "Methanone, (2-hydroxy-4-methoxyphenyl)phenyl-",
+    "Ongrostab HMB",
+    "Oxibenzona"
+  ],
+  "sources": {
+    "identity_properties": "PubChem CID 4632 (https://pubchem.ncbi.nlm.nih.gov/compound/4632)"
+  },
+  "notes": [
+    "XLogP is a computed (predicted) value, not experimental."
+  ],
+  "comptox": {
+    "available": false,
+    "note": "No EPA CCTE API key provided (set --ccte-key or CCTE_API_KEY). Get a free key at https://api-ccte.epa.gov/docs/. Skipping bioactivity."
+  }
+}

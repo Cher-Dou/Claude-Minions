@@ -1,0 +1,40 @@
+{
+  "query": "CAS=6197-30-4",
+  "pubchem_cid": 22571,
+  "ambiguous_match": false,
+  "all_cids": [
+    22571
+  ],
+  "cas_rn": "6197-30-4",
+  "iupac_name": "2-ethylhexyl 2-cyano-3,3-diphenylprop-2-enoate",
+  "molecular_formula": "C24H27NO2",
+  "molecular_weight": "361.5",
+  "smiles": "CCCCC(CC)COC(=O)C(=C(C1=CC=CC=C1)C2=CC=CC=C2)C#N",
+  "connectivity_smiles": "CCCCC(CC)COC(=O)C(=C(C1=CC=CC=C1)C2=CC=CC=C2)C#N",
+  "inchikey": "FMJSMJQBSVNSBF-UHFFFAOYSA-N",
+  "xlogp_predicted": 7.1,
+  "synonyms": [
+    "Octocrylene",
+    "6197-30-4",
+    "2-Ethylhexyl 2-cyano-3,3-diphenylacrylate",
+    "Octocrilene",
+    "2-Propenoic acid, 2-cyano-3,3-diphenyl-, 2-ethylhexyl ester",
+    "Octocrileno",
+    "2-ETHYLHEXYL-2-CYANO-3,3-DIPHENYLACRYLATE",
+    "Octocrilenum",
+    "DTXSID9025299",
+    "5A68WGF6WM",
+    "2-Ethylhexyl 2-cyano-3,3-diphenyl-2-propenoate",
+    "NSC-760433"
+  ],
+  "sources": {
+    "identity_properties": "PubChem CID 22571 (https://pubchem.ncbi.nlm.nih.gov/compound/22571)"
+  },
+  "notes": [
+    "XLogP is a computed (predicted) value, not experimental."
+  ],
+  "comptox": {
+    "available": false,
+    "note": "No EPA CCTE API key provided (set --ccte-key or CCTE_API_KEY). Get a free key at https://api-ccte.epa.gov/docs/. Skipping bioactivity."
+  }
+}
