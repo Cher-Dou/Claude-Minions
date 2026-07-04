@@ -23,12 +23,17 @@ Built as a Claude Code plugin: specialized subagents ("minions") delegate to reu
 | **pubmed-search** | Reproducible Europe PMC / NCBI queries + screening log (Python, no API key) |
 | **chem-lookup** | PubChem identity/properties + optional EPA CompTox/ToxCast bioactivity (Python) |
 | **aop-diagram** | Render an AOP node/edge list to a Mermaid flowchart + PNG (Python) |
+| **exposure-context** | Margin of exposure: in vitro EC50 vs realistic human exposure, with unit conversion (Python) |
 | **pub-figures** | Publication-ready matplotlib style + colorblind-safe palette (Python) |
 
 ### Commands (`commands/`)
 - `/litreview <topic>` — run lit-scout end to end
 - `/profile-chemical <name|CAS>` — run tox-profiler
 - `/analyze-assay <data.csv>` — run bioassay-analyst
+
+### Try it (`examples/`)
+A runnable, end-to-end walkthrough on simulated assay data — QC → dose-response fit →
+human-relevance context. See [examples/README.md](examples/README.md).
 
 ## Design principles
 - **Reproducible**: searches save their exact query; analyses save parameters, scripts, and data.

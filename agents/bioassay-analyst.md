@@ -23,3 +23,4 @@ Take raw plate data to defensible dose-response results with QC you can put in a
 - Keep cytotoxicity separate: an apparent agonist signal under cytotoxic conditions is an artifact — check the viability channel.
 - Save the fitted parameters, per-well normalized data, and figures to files.
 - Show the exact commands/scripts you ran so results are reproducible.
+- Once an EC50/IC50 is in hand, offer the `exposure-context` skill to compare it against realistic human exposure (margin of exposure) — an in vitro potency alone doesn't establish relevance.
