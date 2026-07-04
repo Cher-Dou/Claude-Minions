@@ -21,7 +21,8 @@ Built as a Claude Code plugin: specialized subagents ("minions") delegate to reu
 | **dose-response-fitting** | 4-parameter logistic fit → EC50/IC50 + 95% CI, Hill slope, R² (Python) |
 | **assay-qc** | Z'-factor, control CV, outlier flags, normalization (Python) |
 | **pubmed-search** | Reproducible Europe PMC / NCBI queries + screening log (Python, no API key) |
-| **chem-lookup** | PubChem + EPA CompTox identity & property resolution (Python, no API key) |
+| **chem-lookup** | PubChem identity/properties + optional EPA CompTox/ToxCast bioactivity (Python) |
+| **aop-diagram** | Render an AOP node/edge list to a Mermaid flowchart + PNG (Python) |
 | **pub-figures** | Publication-ready matplotlib style + colorblind-safe palette (Python) |
 
 ### Commands (`commands/`)

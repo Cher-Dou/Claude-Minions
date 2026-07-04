@@ -23,3 +23,4 @@ Assemble a transparent chain: **Molecular Initiating Event (MIE) → Key Events 
 - Keep the chemical-agnostic pathway separate from the chemical-specific evidence that a given compound triggers the MIE.
 - Note human relevance and the exposure/dose gap between in vitro concentrations and realistic human exposure.
 - Output both a readable narrative and a structured node/edge list (MIE, KEs, AO, KERs) suitable for a diagram.
+- Render the pathway with the `aop-diagram` skill (Mermaid + PNG) so it can drop straight into a README or manuscript.

@@ -23,8 +23,19 @@ python scripts/chem_lookup.py --smiles "CC(C)(c1ccc(O)cc1)c1ccc(O)cc1" --out res
 ```
 
 Outputs:
-- `results/chem_profile.json` — CID, CAS, InChIKey, canonical SMILES, formula, MW, XLogP, name synonyms
+- `results/chem_profile.json` — CID, CAS, InChIKey, SMILES, formula, MW, XLogP, synonyms, and a `comptox` block
 - prints a readable summary
+
+### CompTox / ToxCast bioactivity (optional)
+Identity + physchem work with no key. To also pull EPA CompTox DTXSID and a ToxCast
+bioactivity summary (assays tested vs active), supply a free CCTE API key:
+
+```bash
+python scripts/chem_lookup.py --cas 80-05-7 --ccte-key YOUR_KEY --out results/chem
+# or: export CCTE_API_KEY=YOUR_KEY
+```
+Get a key at <https://api-ccte.epa.gov/docs/>. Without one, the `comptox` block is
+returned with `available: false` and a note — the rest of the lookup still succeeds.
 
 ## Reporting rules (enforce these)
 - Always report the identifier you queried with and the resolved CID/DTXSID — enables anyone to reproduce.
