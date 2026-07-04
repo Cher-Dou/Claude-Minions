@@ -1,0 +1,19 @@
+{
+  "name": "claud-minions",
+  "version": "0.1.0",
+  "description": "A team of Claude Code agents and skills for environmental toxicology research: literature scouting, chemical/tox profiling, in vitro bioassay analysis (reporter-gene, high-content), adverse outcome pathway mapping, and scientific writing — focused on how environmental factors drive metabolic and reproductive disease risk.",
+  "author": {
+    "name": "Yuling Xie",
+    "url": "https://cher-dou.github.io"
+  },
+  "keywords": [
+    "toxicology",
+    "endocrine-disrupting-chemicals",
+    "bioassay",
+    "dose-response",
+    "metabolic-disease",
+    "food-safety",
+    "adverse-outcome-pathway"
+  ],
+  "license": "MIT"
+}
