@@ -1,0 +1,20 @@
+{
+  "title": "PPARgamma activation leading to obesity and insulin resistance",
+  "mie": {"id": "MIE", "label": "PPARgamma activation"},
+  "key_events": [
+    {"id": "KE1", "label": "Altered adipogenic gene transcription", "level": "molecular"},
+    {"id": "KE2", "label": "Preadipocyte-to-adipocyte differentiation", "level": "cellular"},
+    {"id": "KE3", "label": "Increased lipid accumulation", "level": "cellular"},
+    {"id": "KE4", "label": "White adipose tissue expansion", "level": "tissue"},
+    {"id": "KE5", "label": "Impaired insulin signalling / adipokine dysregulation", "level": "organ"}
+  ],
+  "ao": {"id": "AO", "label": "Obesity and insulin resistance"},
+  "kers": [
+    {"from": "MIE", "to": "KE1", "confidence": "strong",   "evidence": "in vitro reporter"},
+    {"from": "KE1", "to": "KE2", "confidence": "strong",   "evidence": "in vitro"},
+    {"from": "KE2", "to": "KE3", "confidence": "strong",   "evidence": "in vitro (HCA)"},
+    {"from": "KE3", "to": "KE4", "confidence": "moderate", "evidence": "animal"},
+    {"from": "KE4", "to": "KE5", "confidence": "moderate", "evidence": "animal + human"},
+    {"from": "KE5", "to": "AO",  "confidence": "moderate", "evidence": "human assoc."}
+  ]
+}
