@@ -28,6 +28,7 @@ Built as a Claude Code plugin: specialized subagents ("minions") delegate to reu
 
 ### Commands (`commands/`)
 - `/litreview <topic>` — run lit-scout end to end
+- `/edc-mdc-daily-update [scope]` — collect the newest EDC/MDC studies and nutrient-protection evidence in a daily table
 - `/profile-chemical <name|CAS>` — run tox-profiler
 - `/analyze-assay <data.csv>` — run bioassay-analyst
 
