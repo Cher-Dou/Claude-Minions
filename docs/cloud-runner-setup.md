@@ -10,6 +10,8 @@ This moves the daily update from a laptop-dependent Codex session to GitHub Acti
 - Reads the existing `Evidence Tracker` tab before writing.
 - Deduplicates by DOI first, then PMID, then study link/title.
 - Appends only new studies to the Google Sheet.
+- Uploads a Markdown report artifact for every run.
+- If Google Doc creation fails, the workflow continues with Sheet update and Markdown artifact upload.
 - Optionally emails a notification after the run.
 
 ## Required Google Setup
@@ -76,5 +78,6 @@ The dedupe check still runs, so a backfill will not add papers already in the tr
 - The job can run before your laptop or iPhone is open because GitHub hosts the scheduled runner.
 - Your phone only needs Gmail or calendar/email notifications enabled to receive the result.
 - If Google credentials are missing or the folder/sheet is not shared with the service account, the job will fail visibly in GitHub Actions instead of silently pretending Drive was updated.
-- On failure, the workflow uploads any local Markdown fallback report as a GitHub Actions artifact named `daily-edc-mdc-fallback`.
+- The workflow uploads the Markdown report as a GitHub Actions artifact named `daily-edc-mdc-report`.
+- If Google Doc creation fails, check the Markdown artifact. The Sheet can still be updated.
 - For Shared Drive folders, the runner uses `supportsAllDrives=True` when creating report Docs.

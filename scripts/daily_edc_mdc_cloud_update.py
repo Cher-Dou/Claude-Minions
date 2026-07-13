@@ -373,7 +373,13 @@ def markdown_table(headers: list[str], rows: list[list[str]]) -> str:
     return "\n".join(output)
 
 
-def build_report(day: dt.date, rows: list[list[str]], skipped: int, appended: int) -> str:
+def build_report(
+    day: dt.date,
+    rows: list[list[str]],
+    skipped: int,
+    appended: int,
+    doc_status: str = "Google Doc creation not attempted yet.",
+) -> str:
     table_rows = rows or [[day.isoformat(), "Daily search result", "EDC/MDC scope", "Not applicable", "Search/update status", "No new non-duplicate tracker-eligible study was identified for the report date.", "Deduplication prevents repeatedly adding previously captured studies.", "Automated PubMed search depends on records indexed by run time.", "Status", "N/A", "N/A", ""]]
     headers = [
         "Report Date",
@@ -411,8 +417,18 @@ def build_report(day: dt.date, rows: list[list[str]], skipped: int, appended: in
                 if appended
                 else "Evidence Tracker append skipped because no new non-duplicate study was identified."
             ),
+            "Google Doc status\n" + doc_status,
         ]
     )
+
+
+def write_markdown_report(day: dt.date, content: str, suffix: str = "") -> str:
+    os.makedirs("outputs", exist_ok=True)
+    suffix_part = f"-{suffix}" if suffix else ""
+    path = os.path.join("outputs", f"edc-mdc-daily-research-update-{day.isoformat()}{suffix_part}.md")
+    with open(path, "w", encoding="utf-8") as handle:
+        handle.write(content + "\n")
+    return path
 
 
 def append_rows(sheets, rows: list[list[str]]) -> None:
@@ -460,17 +476,41 @@ def main() -> int:
     new_records = [record for record in scoped if not is_duplicate(record, existing)]
     skipped = len(fetched) - len(new_records)
 
-    doc_id, doc_url = create_google_doc(drive, day)
-    final_rows = [row_for(day, record, doc_url=doc_url) for record in new_records[:12]]
+    doc_id = ""
+    doc_url = ""
+    doc_status = "Google Doc creation skipped or failed before a Doc URL was available."
+    try:
+        doc_id, doc_url = create_google_doc(drive, day)
+        doc_status = f"Google Doc created successfully: {doc_url}"
+    except Exception as exc:
+        doc_status = (
+            "Google Doc creation failed; continuing with Sheet update and Markdown artifact. "
+            f"Error: {type(exc).__name__}: {exc}"
+        )
+        print(doc_status, file=sys.stderr)
+
+    final_rows = [
+        row_for(day, record, doc_url=doc_url or "Doc creation failed; see Markdown artifact")
+        for record in new_records[:12]
+    ]
 
     if final_rows:
         append_rows(sheets, final_rows)
 
-    final_report = build_report(day, final_rows, skipped=skipped, appended=len(final_rows))
-    docs.documents().batchUpdate(
-        documentId=doc_id,
-        body={"requests": [{"insertText": {"location": {"index": 1}, "text": final_report + "\n\n"}}]},
-    ).execute()
+    final_report = build_report(
+        day,
+        final_rows,
+        skipped=skipped,
+        appended=len(final_rows),
+        doc_status=doc_status,
+    )
+    report_path = write_markdown_report(day, final_report)
+
+    if doc_id:
+        docs.documents().batchUpdate(
+            documentId=doc_id,
+            body={"requests": [{"insertText": {"location": {"index": 1}, "text": final_report + "\n\n"}}]},
+        ).execute()
 
     send_email(
         subject=f"EDC/MDC Daily Research Update - {day.isoformat()}",
@@ -481,10 +521,21 @@ def main() -> int:
             Google Doc: {doc_url}
             Evidence Tracker: https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}/edit
             Tracker rows appended: {len(final_rows)}
+            Markdown artifact: {report_path}
             """
         ),
     )
-    print(json.dumps({"date": day.isoformat(), "doc_url": doc_url, "appended_rows": len(final_rows)}))
+    print(
+        json.dumps(
+            {
+                "date": day.isoformat(),
+                "doc_url": doc_url,
+                "markdown_report": report_path,
+                "appended_rows": len(final_rows),
+                "doc_status": doc_status,
+            }
+        )
+    )
     return 0
 
 
@@ -493,19 +544,18 @@ def write_failure_fallback(exc: Exception) -> None:
         day = report_date()
     except Exception:
         day = dt.datetime.now(ZoneInfo("America/Los_Angeles")).date()
-    os.makedirs("outputs", exist_ok=True)
-    path = os.path.join("outputs", f"edc-mdc-daily-research-update-{day.isoformat()}-failure.md")
-    with open(path, "w", encoding="utf-8") as handle:
-        handle.write(
-            "\n\n".join(
-                [
-                    f"# EDC MDC Daily Research Update - {day.isoformat()}",
-                    "Cloud runner failed before completing Google Drive and tracker updates.",
-                    f"Error: `{type(exc).__name__}: {exc}`",
-                    "Check the GitHub Actions log and repository secrets. Do not assume Google Drive or the Evidence Tracker were updated for this run.",
-                ]
-            )
-        )
+    path = write_markdown_report(
+        day,
+        "\n\n".join(
+            [
+                f"# EDC MDC Daily Research Update - {day.isoformat()}",
+                "Cloud runner failed before completing Google Drive and tracker updates.",
+                f"Error: `{type(exc).__name__}: {exc}`",
+                "Check the GitHub Actions log and repository secrets. Do not assume Google Drive or the Evidence Tracker were updated for this run.",
+            ]
+        ),
+        suffix="failure",
+    )
     print(f"Wrote fallback failure report: {path}", file=sys.stderr)
 
 

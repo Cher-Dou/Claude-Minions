@@ -49,10 +49,10 @@ jobs:
           NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
         run: python scripts/daily_edc_mdc_cloud_update.py
 
-      - name: Upload fallback report on failure
-        if: failure()
+      - name: Upload Markdown report artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: daily-edc-mdc-fallback
+          name: daily-edc-mdc-report
           path: outputs/*.md
           if-no-files-found: ignore
