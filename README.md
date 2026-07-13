@@ -32,6 +32,9 @@ Built as a Claude Code plugin: specialized subagents ("minions") delegate to reu
 - `/profile-chemical <name|CAS>` — run tox-profiler
 - `/analyze-assay <data.csv>` — run bioassay-analyst
 
+### Cloud automation
+A scheduled GitHub Actions runner can create the daily EDC/MDC Google Doc and update the Evidence Tracker before any local device is open. See [docs/cloud-runner-setup.md](docs/cloud-runner-setup.md).
+
 ### Try it (`examples/`)
 A runnable, end-to-end walkthrough on simulated assay data — QC → dose-response fit →
 human-relevance context. See [examples/README.md](examples/README.md).
@@ -54,6 +57,12 @@ Install as a Claude Code plugin (from a marketplace or local path), then invoke 
 ```
 /analyze-assay data/plate1.csv
 > use the bioassay-analyst agent to fit the dose-response for compound X
+```
+
+For the cloud daily EDC/MDC report, install the cloud dependencies in GitHub Actions with:
+
+```bash
+pip install -r requirements-cloud.txt
 ```
 
 ## Repository layout
