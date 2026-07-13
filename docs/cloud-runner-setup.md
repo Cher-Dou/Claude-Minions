@@ -20,7 +20,8 @@ This moves the daily update from a laptop-dependent Codex session to GitHub Acti
    - Google Docs API
    - Google Sheets API
 3. Create a JSON key for the service account.
-4. Share these Google Drive targets with the service account email as Editor:
+4. Recommended: create the reports folder inside a Google Shared Drive, then add the service account to that Shared Drive as Content manager or Manager.
+5. Share these Google Drive targets with the service account email as Editor:
    - Folder: `Daily EDC MDC Research Reports`
    - Sheet: `Daily EDC MDC Evidence Tracker`
 
@@ -40,6 +41,12 @@ Required:
 
 - `GOOGLE_SERVICE_ACCOUNT_JSON`: the full service-account JSON key, or base64-encoded JSON.
 - `NCBI_EMAIL`: your contact email for PubMed/NCBI request etiquette.
+
+Recommended for the service-account quota fix:
+
+- `GOOGLE_REPORTS_FOLDER_ID`: folder ID for `Daily EDC MDC Research Reports` inside a Google Shared Drive.
+
+The default folder ID is the original My Drive folder. If the workflow fails with `storageQuotaExceeded`, move the reports folder to a Shared Drive and set `GOOGLE_REPORTS_FOLDER_ID` to the new Shared Drive folder ID.
 
 Optional email notification:
 
@@ -70,3 +77,4 @@ The dedupe check still runs, so a backfill will not add papers already in the tr
 - Your phone only needs Gmail or calendar/email notifications enabled to receive the result.
 - If Google credentials are missing or the folder/sheet is not shared with the service account, the job will fail visibly in GitHub Actions instead of silently pretending Drive was updated.
 - On failure, the workflow uploads any local Markdown fallback report as a GitHub Actions artifact named `daily-edc-mdc-fallback`.
+- For Shared Drive folders, the runner uses `supportsAllDrives=True` when creating report Docs.

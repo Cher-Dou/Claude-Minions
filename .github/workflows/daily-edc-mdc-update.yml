@@ -38,6 +38,7 @@ jobs:
       - name: Run daily EDC/MDC update
         env:
           GOOGLE_SERVICE_ACCOUNT_JSON: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_JSON }}
+          GOOGLE_REPORTS_FOLDER_ID: ${{ secrets.GOOGLE_REPORTS_FOLDER_ID }}
           NCBI_EMAIL: ${{ secrets.NCBI_EMAIL }}
           REPORT_DATE: ${{ inputs.report_date }}
           SMTP_HOST: ${{ secrets.SMTP_HOST }}

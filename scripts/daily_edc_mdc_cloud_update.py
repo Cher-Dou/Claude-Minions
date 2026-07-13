@@ -31,7 +31,7 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 
 
-FOLDER_ID = "1MY56-kcIhevXOe4QDVKZm9EM7_QbrGC6"
+DEFAULT_FOLDER_ID = "1MY56-kcIhevXOe4QDVKZm9EM7_QbrGC6"
 SPREADSHEET_ID = "1tJKmHG55tMwdzFUhMxKuT-Rx9HiW7lI3CRUNp3Ppxs4"
 SHEET_NAME = "Evidence Tracker"
 SCOPES = [
@@ -122,6 +122,10 @@ def env_required(name: str) -> str:
     if not value:
         raise RuntimeError(f"Missing required environment variable: {name}")
     return value
+
+
+def reports_folder_id() -> str:
+    return os.environ.get("GOOGLE_REPORTS_FOLDER_ID") or DEFAULT_FOLDER_ID
 
 
 def report_date() -> dt.date:
@@ -347,9 +351,13 @@ def create_google_doc(drive, day: dt.date) -> tuple[str, str]:
     file_metadata = {
         "name": title,
         "mimeType": "application/vnd.google-apps.document",
-        "parents": [FOLDER_ID],
+        "parents": [reports_folder_id()],
     }
-    created = drive.files().create(body=file_metadata, fields="id,webViewLink").execute()
+    created = (
+        drive.files()
+        .create(body=file_metadata, fields="id,webViewLink", supportsAllDrives=True)
+        .execute()
+    )
     doc_id = created["id"]
     doc_url = created.get("webViewLink") or f"https://docs.google.com/document/d/{doc_id}/edit"
     return doc_id, doc_url
