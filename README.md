@@ -9,6 +9,7 @@ Built as a Claude Code plugin: specialized subagents ("minions") delegate to reu
 ### Agents (`agents/`)
 | Agent | Role |
 |-------|------|
+| **research-manager** | Orchestrates broad research questions across specialist agents, evidence ledgers, and quality gates |
 | **lit-scout** | Systematic literature search + abstract screening → evidence tables & PRISMA-style log |
 | **tox-profiler** | Chemical identity + tox/mechanistic profile from PubChem & EPA CompTox |
 | **bioassay-analyst** | Plate QC, normalization, and dose-response fitting for reporter-gene / high-content assays |
@@ -27,13 +28,43 @@ Built as a Claude Code plugin: specialized subagents ("minions") delegate to reu
 | **pub-figures** | Publication-ready matplotlib style + colorblind-safe palette (Python) |
 
 ### Commands (`commands/`)
+- `/research <question>` — route a broad question through the research-manager and specialist agents
 - `/litreview <topic>` — run lit-scout end to end
 - `/edc-mdc-daily-update [scope]` — collect the newest EDC/MDC studies and nutrient-protection evidence in a daily table
 - `/profile-chemical <name|CAS>` — run tox-profiler
 - `/analyze-assay <data.csv>` — run bioassay-analyst
 
+### Agent architecture
+`research-manager` coordinates the platform: it frames the research question,
+routes work to the right specialist agents and skills, keeps an evidence ledger,
+and applies quality gates before synthesis. See
+[docs/agent-architecture.md](docs/agent-architecture.md) for the workflow,
+quality gates, and roadmap toward memory, evidence scoring, and a knowledge graph.
+
+### Benchmark roadmap
+The first evaluation benchmark is intentionally small. The broader plan is
+AIToxBench: a versioned benchmark suite for EDC/MDC literature screening,
+nutrient-protection evidence, fertility, metabolism, gut mechanisms, chemical
+profiling, assay analysis, AOP mapping, and scientific writing. See
+[benchmarks/AIToxBench/](benchmarks/AIToxBench/).
+
 ### Cloud automation
 A scheduled GitHub Actions runner can create the daily EDC/MDC Google Doc and update the Evidence Tracker before any local device is open. See [docs/cloud-runner-setup.md](docs/cloud-runner-setup.md).
+
+### Evaluation (`evals/`)
+`lit-scout` is evaluated against a scientist-reviewed benchmark containing
+relevant, irrelevant, and borderline environmental-toxicology papers.
+
+| Metric | Result |
+|---|---:|
+| Screening precision | TBD |
+| Screening recall | TBD |
+| Citation validity | TBD |
+| Evidence-field accuracy | TBD |
+| Unsupported claims | TBD |
+
+See [`evals/lit_scout/`](evals/lit_scout/) for the gold-standard dataset,
+prediction template, evaluation script, and reproducibility instructions.
 
 ### Try it (`examples/`)
 A runnable, end-to-end walkthrough on simulated assay data — QC → dose-response fit →
@@ -68,9 +99,12 @@ pip install -r requirements-cloud.txt
 ## Repository layout
 ```
 .claude-plugin/plugin.json   # plugin manifest
-agents/                      # 5 subagent definitions
-skills/                      # 5 skills, each SKILL.md + scripts/
+agents/                      # orchestration and specialist agent definitions
+docs/                        # cloud setup and architecture notes
+skills/                      # reusable skills, each SKILL.md + scripts/
 commands/                    # slash-command entry points
+evals/                       # gold-standard benchmarks and evaluation scripts
+benchmarks/                  # long-term benchmark roadmap and datasets
 ```
 
 ## Author
